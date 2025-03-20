@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selamat Hari Raya</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(to bottom, #fef6e4, #c2e59c); /* Soft pastel gradient */
+            font-family: 'Poppins', sans-serif;
+            position: relative;
+            flex-direction: column;
+        }
+        .card {
+            width: 320px;
+            height: 500px;
+            background: #DAF7A6; 
+            color: #641e16;
+            text-align: center;
+            border-radius: 20px;
+            padding: 25px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 3px solid #fdedec; /* Pink outline */
+            position: relative;
+            overflow: hidden;
+        }
+        .card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.3);
+        }
+        .moon {
+            font-size: 50px;
+            margin-bottom: 10px;
+        }
+        h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 28px;
+        }
+        p {
+            font-family: 'Poppins', sans-serif;
+            font-size: 16px;
+        }
+        .footer {
+            margin-top: 20px;
+            font-size: 16px;
+            font-weight: bold;
+        }
+        .button {
+            background-color: #fdd835;
+            color: #008000;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: bold;
+            margin-top: 20px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .button:hover {
+            background-color: #008000;
+            color: white;
+        }
+        
+        /* Floating Hearts Animation */
+        .floating-heart {
+            position: absolute;
+            font-size: 24px;
+            animation: floatUp 2s linear infinite;
+            opacity: 0.7;
+        }
+
+        @keyframes floatUp {
+            0% { transform: translateY(0); opacity: 1; }
+            100% { transform: translateY(-100px); opacity: 0; }
+        }
+
+        /* Popup Image Styling */
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            z-index: 1000;
+        }
+        .popup img {
+            width: 200px;
+            height: auto;
+            border-radius: 10px;
+        }
+        .close-btn {
+            background: red;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="moon">🌙✨</div>
+        <h1>Selamat Hari Raya Aidilfitri!</h1>
+        <p>Maaf Zahir & Batin 🌸 </p>
+        <p>May this Raya bring peace, happiness, and blessings to you and your loved ones! </p>
+        <p>May your home be filled with laughter, love, and delicious kuih raya! 🍪🎉</p>
+        <div class="footer">From, Aida Adriana ♡</div>
+        <button class="button" onclick="sendLove()">Sending Love 💌</button>
+    </div>
+
+    <!-- Floating Hearts Container -->
+    <div id="heartsContainer"></div>
+
+    <!-- Popup Image -->
+    <div class="popup" id="popup">
+        <img src="qr.jpg"" alt="Love Image">
+        <br>
+        <button class="close-btn" onclick="closePopup()">Close</button>
+    </div>
+
+<script>
+    function sendLove() {
+        // Create Floating Hearts
+        for (let i = 0; i < 10; i++) {
+            let heart = document.createElement("div");
+            heart.innerHTML = "❤️";
+            heart.classList.add("floating-heart");
+
+            let randomX = Math.random() * window.innerWidth; 
+            let randomDuration = Math.random() * 2 + 2; 
+
+            heart.style.left = randomX + "px";
+            heart.style.animationDuration = randomDuration + "s";
+
+            document.body.appendChild(heart);
+
+            setTimeout(() => {
+                heart.remove();
+            }, randomDuration * 1000);
+        }
+
+        // ✅ Show Popup
+        document.getElementById("popup").style.display = "block";
+    }
+
+    function closePopup() {
+        // ✅ Hide Popup
+        document.getElementById("popup").style.display = "none";
+    }
+</script>
